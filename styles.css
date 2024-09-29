@@ -1,3 +1,4 @@
+/* Styles généraux */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -12,90 +13,104 @@ header {
     text-align: center;
 }
 
+h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 nav li {
-    display: inline;
     margin: 0 15px;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
+    font-size: 18px;
 }
 
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Styles pour la section héro sur la page d'accueil */
 .hero {
-    background-image: url('concert.jpg');
+    background-image: url('images/back-in-scott-photo.jpg');
     background-size: cover;
+    background-position: center;
     padding: 100px 20px;
     text-align: center;
 }
 
 .hero h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 24px;
-    margin-bottom: 40px;
-}
-
-.btn {
-    background-color: #e22;
-    color: #fff;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-footer {
-    background-color: #111;
-    text-align: center;
-    padding: 10px;
-}
-
-/* Styles pour les sections */
-section {
-    padding: 20px;
-}
-
-/* Styles pour les titres */
-h2 {
     font-size: 36px;
     margin-bottom: 20px;
 }
 
-/* Styles pour la table des concerts */
+.hero p {
+    font-size: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Styles pour les tableaux de dates */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 table th, table td {
     border: 1px solid #fff;
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 table th {
     background-color: #222;
+    font-size: 20px;
 }
 
-/* Styles pour la galerie */
+table td {
+    background-color: #333;
+    font-size: 18px;
+}
+
+/* Styles pour la galerie de photos */
 .gallery {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: center;
+    padding: 20px;
 }
 
 .gallery img {
     width: calc(33.333% - 10px);
     height: auto;
+    border-radius: 8px;
+}
+
+/* Styles pour les vidéos */
+.videos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.videos iframe {
+    border: none;
+    border-radius: 8px;
 }
 
 /* Styles pour le formulaire de contact */
@@ -103,10 +118,15 @@ form {
     display: flex;
     flex-direction: column;
     max-width: 600px;
+    margin: 20px auto;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 label {
     margin-top: 10px;
+    font-size: 18px;
 }
 
 input, textarea {
@@ -115,6 +135,7 @@ input, textarea {
     background-color: #333;
     border: none;
     color: #fff;
+    border-radius: 4px;
 }
 
 button {
@@ -125,8 +146,38 @@ button {
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 button:hover {
     background-color: #c11;
+}
+
+/* Pied de page */
+footer {
+    background-color: #111;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+/* Badge Linkaband */
+a img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
 }
