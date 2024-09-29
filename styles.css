@@ -7,11 +7,6 @@ body {
     color: #fff;
 }
 
-header {
-    background-color: #111;
-    padding: 20px;
-    text-align: center;
-}
 
 h1 {
     font-size: 48px;
@@ -183,7 +178,7 @@ a img {
 
 
 .logo {
-    width: 200px; /* Ajustez la taille de l'image à votre convenance */
+    width: 100px; /* Ajustez la taille de l'image à votre convenance */
     height: auto; /* Conserve le ratio de l'image */
     display: block; /* Assure que l'image est traitée comme un bloc */
     margin: 0 auto; /* Centre l'image horizontalement */
