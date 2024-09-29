@@ -41,7 +41,7 @@ nav a:hover {
 
 /* Styles pour la section héro sur la page d'accueil */
 .hero {
-    background-image: url('images/back-in-scott-photo.jpg');
+    background-image: url('Photos/Bannière.jpg');
     background-size: cover;
     background-position: center;
     padding: 100px 20px;
