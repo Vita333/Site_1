@@ -43,9 +43,8 @@ nav a:hover {
 .hero {
     background-image: url('Photos/Bannière.jpg');
     background-size: cover;
-    background-position: center;
-    padding: 100px 20px;
-    text-align: center;
+    background-position: center;    
+    height: 400px; /* Définit une hauteur à la section pour que l'image soit visible */
 }
 
 .hero h2 {
