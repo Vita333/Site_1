@@ -7,15 +7,16 @@
 </head>
 <body>
     <header>
+        <!-- CHANGER LE LOGO : Remplacez le chemin de l'image si besoin -->
         <a href="index.html">
-            <img src="Photos/logo_rect.jpg" alt="Back in Scott logo" class="logo">
+            <img src="Photos/Back_in_scott.jpg" alt="Back in Scott logo" class="logo">
         </a>
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="dates.html">Dates</a></li>
-                <li><a href="photos.html">Photos</a></li>
                 <li><a href="videos.html">Vidéos</a></li>
+                <li><a href="photos.html">Photos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -24,29 +25,52 @@
     <main>
         <section>
             <h2>Galerie Photos</h2>
+            <!-- SECTION DES PHOTOS :
+                 Modifier les images de la galerie ci-dessous.
+                 Pour changer une photo, modifiez l'attribut src et l'attribut alt dans la balise <img>. -->
             <div class="gallery">
                 <img src="Photos/concert.jpg" alt="Concert 1">
                 <img src="Photos/concert.jpg" alt="Concert 2">
                 <img src="Photos/concert.jpg" alt="Concert 3">
                 <!-- Ajoutez plus d'images ici -->
-            </div><div class="gallery">
+            </div>
+            <div class="gallery">
                 <img src="Photos/concert.jpg" alt="Concert 1">
                 <img src="Photos/concert.jpg" alt="Concert 2">
                 <img src="Photos/concert.jpg" alt="Concert 3">
                 <!-- Ajoutez plus d'images ici -->
             </div>
+            <!-- FIN SECTION DES PHOTOS -->
         </section>
     </main>
 
     <footer>
         <a href="https://www.facebook.com/backinscott?locale=fr_FR" target="_blank">Facebook</a> |
         <a href="https://www.instagram.com/backinscott/" target="_blank">Instagram</a>
-        <p>Contact Fred : 06 48 37 32 27</p>
+        <p>
+            Contact Fred :
+            <!-- Le numéro est masqué dans un span -->
+            <span id="contact-number" style="display:none;">06 48 37 32 27</span>
+            <!-- Lien pour afficher le numéro -->
+            <a href="#" id="toggle-contact" onclick="toggleContactNumber(); return false;">Afficher</a>
+        </p>
     </footer>
+    
+    <script type="text/javascript">
+    function toggleContactNumber() {
+        var contactNumber = document.getElementById("contact-number");
+        var toggleLink = document.getElementById("toggle-contact");
+        // Affiche le numéro
+        contactNumber.style.display = "inline";
+        // Cache le lien "Afficher"
+        toggleLink.style.display = "none";
+    }
+    </script>
+    
 
     <!--Badge Linkaband généré le 24-09-2024-->
     <a href='https://linkaband.com/back-in-scott?utm_source=badge&utm_campaign=122440' target='_blank'>
         <img src='https://linkaband.com/assets/images/validation/reservation-noir.png' alt='Back-in-scott' style='width: 130px; height: 130px;'>
     </a> 
 </body> 
-</html> 
+</html>

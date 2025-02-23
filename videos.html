@@ -7,15 +7,16 @@
 </head>
 <body>
     <header> 
+        <!-- CHANGER LE LOGO : Remplacez le chemin de l'image si besoin -->
         <a href="index.html">
-            <img src="Photos/logo_rect.jpg" alt="Back in Scott logo" class="logo">
+            <img src="Photos/Back_in_scott.jpg" alt="Back in Scott logo" class="logo">
         </a>
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="dates.html">Dates</a></li>
-                <li><a href="photos.html">Photos</a></li>
                 <li><a href="videos.html">Vidéos</a></li>
+                <li><a href="photos.html">Photos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -24,6 +25,9 @@
     <main>
         <section>
             <h2>Nos Vidéos</h2>
+            <!-- SECTION DES VIDÉOS :
+                 Modifier les liens YouTube ci-dessous.
+                 Pour changer une vidéo, remplacez l'URL dans l'attribut src de la balise <iframe>. -->
             <div class="videos">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/sVYlkLauPlY" frameborder="0" allowfullscreen></iframe>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/AUYfjLRcaE0" frameborder="0" allowfullscreen></iframe>
@@ -36,14 +40,33 @@
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/RY41igptHGs" frameborder="0" allowfullscreen></iframe>
                 <!-- Ajoutez plus de vidéos ici -->
             </div>
+            <!-- FIN SECTION DES VIDÉOS -->
         </section>
     </main>
 
     <footer>
         <a href="https://www.facebook.com/backinscott?locale=fr_FR" target="_blank">Facebook</a> |
         <a href="https://www.instagram.com/backinscott/" target="_blank">Instagram</a>
-        <p>Contact Fred : 06 48 37 32 27</p>
+        <p>
+            Contact Fred :
+            <!-- Le numéro est masqué dans un span -->
+            <span id="contact-number" style="display:none;">06 48 37 32 27</span>
+            <!-- Lien pour afficher le numéro -->
+            <a href="#" id="toggle-contact" onclick="toggleContactNumber(); return false;">Afficher</a>
+        </p>
     </footer>
+    
+    <script type="text/javascript">
+    function toggleContactNumber() {
+        var contactNumber = document.getElementById("contact-number");
+        var toggleLink = document.getElementById("toggle-contact");
+        // Affiche le numéro
+        contactNumber.style.display = "inline";
+        // Cache le lien "Afficher"
+        toggleLink.style.display = "none";
+    }
+    </script>
+    
 
     <!--Badge Linkaband généré le 24-09-2024-->
     <a href='https://linkaband.com/back-in-scott?utm_source=badge&utm_campaign=122440' target='_blank'>

@@ -8,14 +8,14 @@
 <body>
     <header>
         <a href="index.html">
-            <img src="Photos/logo_rect.jpg" alt="Back in Scott logo" class="logo">
+            <img src="Photos/Back_in_scott.jpg" alt="Back in Scott logo" class="logo">
         </a>
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="dates.html">Dates</a></li>
-                <li><a href="photos.html">Photos</a></li>
                 <li><a href="videos.html">Vidéos</a></li>
+                <li><a href="photos.html">Photos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -26,52 +26,55 @@
             <p>
                 Vous souhaitez nous programmer ou bien vous souhaitez simplement nous laisser un message ? Utilisez le formulaire suivant.
             </p>
-            <form id="contact-form">
+            <form id="contact-form" novalidate>
                 <label for="name">Nom :</label>
                 <input type="text" id="name" name="name" required>
-    
+            
                 <label for="subject">Objet :</label>
                 <input type="text" id="subject" name="subject" required>
-    
+            
                 <label for="email">Email :</label>
                 <input type="email" id="email" name="email" required>
-    
+            
                 <label for="confirm-email">Confirmez l'email :</label>
                 <input type="email" id="confirm-email" name="confirm-email" required>
-    
+            
                 <label for="message">Message :</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
-    
+            
                 <button type="submit">Envoyer</button>
-            </form>
+            
+                <!-- Message d'erreur déplacé sous le bouton -->
+                <p id="email-error" style="color: red; display: none;">⚠️ Les adresses e-mail ne correspondent pas. Veuillez réessayer.</p>
+            </form>            
     
             <p id="email-error" style="color: red; display: none;">Les adresses e-mail ne correspondent pas. Veuillez réessayer.</p>
         </section>
     </main>
 
-    <script>
-        function validateEmails() {
-            var email = document.getElementById("email").value;
-            var confirmEmail = document.getElementById("confirm-email").value;
-            var errorMessage = document.getElementById("email-error");
-    
-            if (email !== confirmEmail) {
-                errorMessage.style.display = "block"; // Affiche le message d'erreur si les emails ne correspondent pas
-                return false; // Empêche la soumission du formulaire
-            }
-    
-            errorMessage.style.display = "none"; // Cache le message d'erreur si les emails correspondent
-            return true; // Permet la soumission du formulaire
-        }
-    </script>
-
-    
-
     <footer>
         <a href="https://www.facebook.com/backinscott?locale=fr_FR" target="_blank">Facebook</a> |
         <a href="https://www.instagram.com/backinscott/" target="_blank">Instagram</a>
-        <p>Contact Fred : 06 48 37 32 27</p>
+        <p>
+            Contact Fred :
+            <!-- Le numéro est masqué dans un span -->
+            <span id="contact-number" style="display:none;">06 48 37 32 27</span>
+            <!-- Lien pour afficher le numéro -->
+            <a href="#" id="toggle-contact" onclick="toggleContactNumber(); return false;">Afficher</a>
+        </p>
     </footer>
+    
+    <script type="text/javascript">
+    function toggleContactNumber() {
+        var contactNumber = document.getElementById("contact-number");
+        var toggleLink = document.getElementById("toggle-contact");
+        // Affiche le numéro
+        contactNumber.style.display = "inline";
+        // Cache le lien "Afficher"
+        toggleLink.style.display = "none";
+    }
+    </script>
+    
 
     <!--Badge Linkaband généré le 24-09-2024-->
     <a href='https://linkaband.com/back-in-scott?utm_source=badge&utm_campaign=122440' target='_blank'>
@@ -79,32 +82,48 @@
     </a>
 
     
-    <!-- Script EmailJS -->
-    <script type="text/javascript">
-        (function() {
-            emailjs.init("hGaY1SqQwRtMBO6rp");  // Remplacez par votre User ID EmailJS
-        })();
+<!-- Import de la bibliothèque EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialisation d'EmailJS avec votre User ID
+    emailjs.init("hGaY1SqQwRtMBO6rp");  // Remplacez par votre User ID EmailJS
 
-            // Vérification des emails
-            var email = document.getElementById("email").value;
-            var confirmEmail = document.getElementById("confirm-email").value;
-            if (email !== confirmEmail) {
-                alert("Les adresses e-mail ne correspondent pas.");
-                return;
-            }
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche la soumission par défaut
+        console.log("Événement submit déclenché");
+
+        // Récupérer les champs d'email et de confirmation
+        var email = document.getElementById("email").value.trim();
+        var confirmEmail = document.getElementById("confirm-email").value.trim();
+        var errorMessage = document.getElementById("email-error");
+        console.log("Email :", email, " - Confirmation :", confirmEmail);
+
+        // Vérification si les emails correspondent
+        if (email !== confirmEmail) {
+            console.log("Les emails ne correspondent pas !");
+            errorMessage.style.display = "block"; // Afficher le message d'erreur
+            errorMessage.textContent = "⚠️ Les adresses e-mail ne correspondent pas. Veuillez réessayer.";
+            document.getElementById("confirm-email").focus();
+            return; // Stoppe l'exécution
+        } else {
+            console.log("Les emails correspondent, on envoie le formulaire.");
+            errorMessage.style.display = "none"; // Cache le message d'erreur
 
             // Envoi via EmailJS
             emailjs.sendForm('service_tdwkjk9', 'template_h68ucrk', this)
                 .then(function() {
-                    alert('Email envoyé avec succès !');
+                    alert('✅ Email envoyé avec succès !');
+                    document.getElementById('contact-form').reset();
                 }, function(error) {
-                    alert('Échec de l\'envoi de l\'email : ' + error);
+                    alert('❌ Échec de l\'envoi de l\'email : ' + error);
                 });
-        });
-    </script>
+        }
+    });
+});
+</script>
+
 
 </body>
 </html>

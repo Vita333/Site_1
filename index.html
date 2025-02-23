@@ -7,40 +7,56 @@
 </head>
 <body>
     <header>    
+        <!-- CHANGER LE LOGO : Remplacez le chemin de l'image si vous souhaitez utiliser un autre logo -->
         <a href="index.html">
-            <img src="Photos/logo_rect.jpg" alt="Back in Scott logo" class="logo">
+            <img src="Photos/Back_in_scott.jpg" alt="Back in Scott logo" class="logo">
         </a>
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="dates.html">Dates</a></li>
-                <li><a href="photos.html">Photos</a></li>
                 <li><a href="videos.html">Vidéos</a></li>
+                <li><a href="photos.html">Photos</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <div class="hero-text">
-            <p>
-                <strong>Bienvenue !</strong><br><br> 
-                Back in Scott est un groupe tribute AC/DC composé de 5 musiciens d’Ille et Vilaine et des Côtes d’Armor ce qui en fait un groupe Tribute AC/DC certifié 100% Pur Beurre salé ! <br><br>
-                Le répertoire de Back in Scott s’articule essentiellement autour de la période Bon Scott d’AC/DC (1974-1980) sans oublier l’incontournable album <em>Back in Black</em>. Back in Scott est un tribute qui ne cherche pas à imiter ou singer mais à restituer l’énergie et le son brut originel d’AC/DC : Une rythmique implacable, des solos guitare tranchants et Rock and Roll, une performance vocale fidèle : <strong>Let there be Rock</strong> !
-            </p>
-        </div>
-    
-        <div class="hero">
-            <!-- L'image de fond sera ici -->
-        </div>
+        <!-- SECTION DU TEXTE DE BIENVENUE : Modifier ce texte pour changer le message d'accueil -->
+        <p style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 24px;">
+            <strong><br>Bienvenue !</strong><br><br> 
+            Back in Scott est un groupe tribute AC/DC composé de 5 musiciens d’Ille et Vilaine et des Côtes d’Armor ce qui en fait un groupe Tribute AC/DC certifié 100% Pur Beurre salé ! <br><br>
+            Le répertoire de Back in Scott s’articule essentiellement autour de la période Bon Scott d’AC/DC (1974-1980) sans oublier l’incontournable album <em>Back in Black</em>. Back in Scott est un tribute qui ne cherche pas à imiter ou singer mais à restituer l’énergie et le son brut originel d’AC/DC : Une rythmique implacable, des solos guitare tranchants et Rock and Roll, une performance vocale fidèle : <strong>Let there be Rock</strong> ! <br><br>
+        </p>
+        <!-- FIN SECTION DU TEXTE DE BIENVENUE -->
+        <div class="hero"></div>
     </main>
-    
 
     <footer>
         <a href="https://www.facebook.com/backinscott?locale=fr_FR" target="_blank">Facebook</a> |
         <a href="https://www.instagram.com/backinscott/" target="_blank">Instagram</a>
-        <p>Contact Fred : 06 48 37 32 27</p>
+        <p>
+            Contact Fred :
+            <!-- Le numéro est masqué dans un span -->
+            <span id="contact-number" style="display:none;">06 48 37 32 27</span>
+            <!-- Lien pour afficher le numéro -->
+            <a href="#" id="toggle-contact" onclick="toggleContactNumber(); return false;">Afficher</a>
+        </p>
     </footer>
+    
+    <script type="text/javascript">
+    function toggleContactNumber() {
+        var contactNumber = document.getElementById("contact-number");
+        var toggleLink = document.getElementById("toggle-contact");
+        // Affiche le numéro
+        contactNumber.style.display = "inline";
+        // Cache le lien "Afficher"
+        toggleLink.style.display = "none";
+    }
+    </script>
+    
+    
 
     <!--Badge Linkaband généré le 24-09-2024-->
     <a href='https://linkaband.com/back-in-scott?utm_source=badge&utm_campaign=122440' target='_blank'>
