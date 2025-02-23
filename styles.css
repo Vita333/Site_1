@@ -25,19 +25,40 @@ nav li {
 }
 
 nav a {
+    /* Couleur du texte */
     color: #fff;
+    /* Enlève la décoration de lien */
     text-decoration: none;
+    /* Taille de la police */
     font-size: 18px;
-    border: 2px solid transparent; /* Bordure initialement transparente */
-    padding: 5px 10px;             /* Un peu d'espace autour du texte */
-    border-radius: 4px;            /* Coins arrondis */
-    transition: background-color 0.3s, border-color 0.3s; /* Transition fluide */
+    
+    /* Ajoute une bordure blanche pour donner l'impression d'un bouton encadré */
+    border: 2px solid #fff; 
+    /* Ajoute un peu d'espace autour du texte pour un aspect « bouton » */
+    padding: 8px 15px;
+    /* Coins arrondis */
+    border-radius: 4px;
+    
+    /* Arrière-plan transparent par défaut */
+    background-color: transparent;
+    
+    /* Espace horizontal entre chaque bouton */
+    margin: 0 5px;
+    
+    /* Transition fluide sur l'arrière-plan, la couleur du texte et la bordure */
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
+/* Au survol, on passe en « surbrillance » */
 nav a:hover {
-    border-color: #fff;            /* La bordure devient blanche */
-    background-color: rgba(255, 255, 255, 0.2); /* Fond avec légère surbrillance */
+    /* Fond blanc pour mettre en évidence le bouton */
+    background-color: #fff;
+    /* Texte en noir pour contraster avec le fond blanc */
+    color: #000;
+    /* Bordure blanche pour rester cohérent avec le fond */
+    border-color: #fff;
 }
+
 
 /* Styles pour la section héro sur la page d'accueil */
 .hero {
@@ -187,7 +208,7 @@ a img {
 
 
 .logo {
-    width: 520px; /* Ajustez la taille de l'image à votre convenance */
+    width: 600px; /* Ajustez la taille de l'image à votre convenance */
     height: auto; /* Conserve le ratio de l'image */
     display: block; /* Assure que l'image est traitée comme un bloc */
     margin: 0 auto; /* Centre l'image horizontalement */
