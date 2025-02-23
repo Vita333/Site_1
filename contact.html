@@ -85,44 +85,57 @@
 <!-- Import de la bibliothèque EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
+
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialisation d'EmailJS avec votre User ID
-    emailjs.init("hGaY1SqQwRtMBO6rp");  // Remplacez par votre User ID EmailJS
-
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Empêche la soumission par défaut
-        console.log("Événement submit déclenché");
-
-        // Récupérer les champs d'email et de confirmation
-        var email = document.getElementById("email").value.trim();
-        var confirmEmail = document.getElementById("confirm-email").value.trim();
-        var errorMessage = document.getElementById("email-error");
-        console.log("Email :", email, " - Confirmation :", confirmEmail);
-
-        // Vérification si les emails correspondent
-        if (email !== confirmEmail) {
-            console.log("Les emails ne correspondent pas !");
-            errorMessage.style.display = "block"; // Afficher le message d'erreur
-            errorMessage.textContent = "⚠️ Les adresses e-mail ne correspondent pas. Veuillez réessayer.";
-            document.getElementById("confirm-email").focus();
-            return; // Stoppe l'exécution
-        } else {
-            console.log("Les emails correspondent, on envoie le formulaire.");
-            errorMessage.style.display = "none"; // Cache le message d'erreur
-
-            // Envoi via EmailJS
-            emailjs.sendForm('service_tdwkjk9', 'template_h68ucrk', this)
-                .then(function() {
-                    alert('✅ Email envoyé avec succès !');
-                    document.getElementById('contact-form').reset();
-                }, function(error) {
-                    alert('❌ Échec de l\'envoi de l\'email : ' + error);
-                });
-        }
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialisation d'EmailJS avec votre User ID
+        emailjs.init("hGaY1SqQwRtMBO6rp");  // Remplacez par votre User ID EmailJS
+    
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche la soumission par défaut
+            console.log("Événement submit déclenché");
+    
+            // Récupérer les valeurs des emails
+            var email = document.getElementById("email").value.trim();
+            var confirmEmail = document.getElementById("confirm-email").value.trim();
+            var errorMessage = document.getElementById("email-error");
+    
+            // Fonction pour valider le format de l'email
+            function isValidEmail(email) {
+                var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return regex.test(email);
+            }
+    
+            // Vérification des emails
+            if (email !== confirmEmail) {
+                console.log("Les emails ne correspondent pas !");
+                errorMessage.style.display = "block";
+                errorMessage.textContent = "⚠️ Les adresses e-mail ne correspondent pas. Veuillez réessayer.";
+                document.getElementById("confirm-email").focus();
+                return;
+            } else if (!isValidEmail(email)) {
+                console.log("Format d'email invalide !");
+                errorMessage.style.display = "block";
+                errorMessage.textContent = "⚠️ Le format de l'e-mail est invalide. Veuillez utiliser le format exemple@mail.com.";
+                document.getElementById("email").focus();
+                return;
+            } else {
+                errorMessage.style.display = "none"; // Cache le message d'erreur
+    
+                // Envoi via EmailJS
+                emailjs.sendForm('service_tdwkjk9', 'template_h68ucrk', this)
+                    .then(function() {
+                        alert('✅ Email envoyé avec succès !');
+                        document.getElementById('contact-form').reset();
+                    }, function(error) {
+                        console.error("Erreur EmailJS :", error);
+                        alert('❌ Échec de l\'envoi de l\'email : ' + (error.text || "Erreur inconnue"));
+                    });
+            }
+        });
     });
-});
-</script>
+    </script>
+
 
 
 </body>
